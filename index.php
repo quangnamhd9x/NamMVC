@@ -1,10 +1,10 @@
 <?php
-require __DIR__ ."/vendor/autoload.php";
+require __DIR__ . "/vendor/autoload.php";
 
-$page = isset($_REQUEST["page"])? $_REQUEST["page"] : NULL;
+$page = isset($_REQUEST["page"]) ? $_REQUEST["page"] : NULL;
 $studentControler = new App\Controller\StudentController();
 
-switch ($page){
+switch ($page) {
     case 'listStudent':
         $studentControler->viewStudent();
         break;

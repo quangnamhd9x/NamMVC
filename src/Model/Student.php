@@ -10,7 +10,8 @@ class Student
     protected $studentName;
     protected $birthday;
 
-    public function __construct($studentName, $birthday){
+    public function __construct($studentName, $birthday)
+    {
         $this->studentName = $studentName;
         $this->birthday = $birthday;
     }
