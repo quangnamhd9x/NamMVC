@@ -27,7 +27,15 @@ class StudentController
         } else {
             $name = $_POST["student_name"];
             $birthday = $_POST["birthday"];
+            $file = $_FILES['avatar']['tmp_name'];
+            $path = "src/uploads/" . $_FILES['avatar']['name'];
+            if (move_uploaded_file($file, $path)) {
+                echo "Tải tập tin thành công";
+            } else {
+                echo "Tải tập tin thất bại";
+            }
             $student = new Student($name, $birthday);
+            $student->setImage($path);
             $this->studentController->addStudent($student);
             header("location:index.php");
         }
