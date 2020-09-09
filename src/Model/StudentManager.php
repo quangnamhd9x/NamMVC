@@ -24,6 +24,8 @@ class StudentManager
         foreach ($data as $items) {
             $student = new Student($items["student_name"], $items["birthday"]);
             $student->setStudentId($items["student_id"]);
+            $img = $items["image"] == "src/uploads/"?"src/uploads/default.png":$items["image"];
+            $student->setImage($img);
             array_push($students, $student);
         }
         return $students;
@@ -31,10 +33,11 @@ class StudentManager
 
     public function addStudent($student)
     {
-        $sql = "INSERT INTO students (student_name, birthday) VALUES (:student_name, :birthday)";
+        $sql = "INSERT INTO students (student_name, birthday, image) VALUES (:student_name, :birthday, :image)";
         $stmt = $this->DBconnect->connectDB()->prepare($sql);
         $stmt->bindParam(":student_name", $student->getStudentName());
         $stmt->bindParam(":birthday", $student->getBirthday());
+        $stmt->bindParam(":image", $student->getImage());
         $stmt->execute();
     }
 

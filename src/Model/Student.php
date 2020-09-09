@@ -9,11 +9,28 @@ class Student
     protected $studentId;
     protected $studentName;
     protected $birthday;
+    protected $image;
 
     public function __construct($studentName, $birthday)
     {
         $this->studentName = $studentName;
         $this->birthday = $birthday;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image): void
+    {
+        $this->image = $image;
     }
 
     /**
